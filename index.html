@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>True/False program</title>
+
+
+
+</head>
+
+
+<body>
+<script type="module">
+
+</script>
+
+<div id="progressbar" style="position:fixed; top: -25px; left: 0px; height: 10px; width: 0%; background-color: aqua; animation: idle 2s;">
+
+</div>
+
+
+
+<div id='audioplayermain' style="padding: 0%;margin: 0%; position: fixed">
+    <div id='playerboundry' style="text-align: left">
+
+        <div id='volume' class='fullvolume'></div>
+
+    </div>
+    <audio id="backgroundmusic" loop="loop" autoplay>
+        <source src="startmusic.m4a" type="audio/x-m4a">
+    </audio>
+</div>
+
+
+
+
+
+<!--<div id="eidgif" style="display: none" class="tenor-gif-embed" data-postid="25565588" data-share-method="host" data-aspect-ratio="1.73913" data-width="100%"><a href="https://tenor.com/view/almina-electricals-and-electronics-gif-25565588">Almina Electricals And Electronics GIF</a>from <a href="https://tenor.com/search/almina+electricals+and+electronics-gifs">Almina Electricals And Electronics GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>-->
+
+<div id="leaderboard" style="display: none; margin-top: 1px;margin: 0%;">
+
+    <div style="position: absolute; top: 5%; display: inline; width: 100%; height: 100%; text-align: center; padding: 0px;">
+        <h1 style="display: block; margin-left: auto; margin-right: auto; margin-top:0%; margin-bottom:1% ;padding: 0%;text-align: center; font-size: 80px; ">Leaderboard</h1>
+        <h3 style="font-weight: lighter;">Results might take some time to load <br/> Scroll Down For Results</h3>
+        <img id="eidgif" style="display: none; width: 40%; height: auto;margin-left: auto; margin-right: auto;" src="eidgif.png">
+        <div style="display:block; padding: 0%; margin: 0%">
+
+            <table style="alignment: center; width: 100%; height: 100%">
+                <tr style="padding: 0%">
+                    <th style="padding-bottom: 1%; padding-top: 1%; margin: 0%; font-size: 40px;"><h2>Easy</h2></th>
+                    <th style="padding-bottom: 1%; padding-top: 1%; font-size: 40px;"><h2>Medium</h2></th>
+                    <th style="padding-bottom: 1%; padding-top: 1%; font-size: 40px;"><h2>Hard</h2></th>
+                </tr>
+                <tr style="padding: 0%">
+                    <td style="width: 33%; text-align: center; vertical-align: top;"><ol id="easylist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; margin-top:0%; padding-left: 10%; padding-right: 10%; "></ol></td>
+                    <td style="width: 33%; text-align: center; vertical-align: top;"><ol id="mediumlist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; margin-top:0%; padding-left: 10%; padding-right: 10%; "></ol></td>
+                    <td style="width: 33%; text-align: center; vertical-align: top;"><ol id="hardlist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; margin-top:0%; padding-left: 10%; padding-right: 10%; "></ol></td>
+                </tr>
+            </table>
+<!--            <div style=" flex: 1; display: flex; padding-top: 0%; margin-top: 0%;">-->
+<!--                <h3 style="font-size: 60px; margin: 0%; padding: 0%; padding-bottom: 5%;position: absolute; top: 15%;">Easy</h3>-->
+<!--                <ol id="easylist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; flex: 1; margin-top:20%; padding-left: 10%; padding-right: 10%; ">-->
+
+
+
+<!--                </ol>-->
+<!--            </div>-->
+<!--            <div style=" flex: 1; display: flex; padding-top: 0%; margin-top: 0%;">-->
+
+<!--                <ol id="mediumlist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; flex: 1; margin-top:1px; padding-left: 10%; padding-right: 10%; position: fixed; top: 25%;">-->
+
+<!--                    <h3 style="font-size: 60px; margin: 0%; padding: 0%; padding-bottom: 5%;">Medium</h3>-->
+<!--                    <li id="Player1m" ></li>-->
+<!--                    <li id="Player2m"></li>-->
+<!--                    <li id="Player3m"></li>-->
+<!--                    <li id="Player4m"></li>-->
+<!--                    <li id="Player5m"></li>-->
+<!--                    <li id="Player6m"></li>-->
+<!--                    <li id="Player7m"></li>-->
+<!--                    <li id="Player8m"></li>-->
+<!--                    <li id="Player9m"></li>-->
+<!--                    <li id="Player10m"></li>-->
+
+<!--                </ol>-->
+<!--            </div>-->
+<!--            <div style=" flex: 1; display: flex; padding-top: 0%; margin-top: 0%;">-->
+<!--                <ol id="hardlist" style="font-family: 'Tahoma', sans-serif; font-size: 40px; color: azure; text-align: center; flex: 1;margin-top:1px; padding-left: 10%; padding-right: 10%;" >-->
+
+<!--                    <h3 style="font-size: 60px; margin: 0%; padding: 0%; padding-bottom: 5%;">Hard</h3>-->
+<!--                    <li id="Player1h" style="text-align: center"></li>-->
+<!--                    <li id="Player2h"></li>-->
+<!--                    <li id="Player3h"></li>-->
+<!--                    <li id="Player4h"></li>-->
+<!--                    <li id="Player5h"></li>-->
+<!--                    <li id="Player6h"></li>-->
+<!--                    <li id="Player7h"></li>-->
+<!--                    <li id="Player8h"></li>-->
+<!--                    <li id="Player9h"></li>-->
+<!--                    <li id="Player10h"></li>-->
+
+<!--                </ol>-->
+<!--            </div>-->
+        </div>
+<!--        <button id="getleader">-->
+<!--            See Leaderboard-->
+<!--        </button>-->
+
+
+    </div>
+</div>
+
+
+<img id="midisgrouplogo" src="midisgrouplogo.png" style="position: absolute; right: 0%">
+<img id = "credits" src="credits.png" style="position: fixed;  bottom: 0%; right: 38%;">
+<img id="image_c" src=
+        "tick.png"
+     alt="correct" style="display: none; position: fixed; bottom: 20%; right: 47%; margin: 0%"  width="100" height="80" />
+<img id="image_w" src=
+        "cross.png"
+     alt="wrong" style="display: none; position: fixed; bottom: 20%; right: 48%; margin: 0%" width="50" height="48"/>
+<img id="thumbsdown" src=
+        "thumbsdown.png"
+     alt="poor" style="display: none; position: fixed; top: 50%; bottom: 50%; right: 55%; left: 45%; margin: 0%" width="200" height="200"/>
+<img id="thumbsmiddle" src=
+        "thmbs-even-md.png"
+     alt="mid" style="display: none; position: absolute; top: 40%; bottom: 40%; right: 40%; left: 40%; animation: picpulse 3s; margin: 0%" width="300" height="200"/>
+<img id="thumbsup" src=
+        "thumbsup.webp"
+     alt="vgood" style="display: none; position: fixed; top: 40%; bottom: 40%; right: 40%; left: 40%; animation: picpulse 3s; margin: 0%" width="200" height="200"/>
+<img id="perfect" src=
+        "ok.png"
+     alt="perfect" style="display: none; position: fixed; bottom: 20%; right: 40%; animation: picpulse 3s; margin: 0%" width="200" height="250"/>
+
+<div id="welcome">
+    <h1 style="padding: 0%; margin: 0%; margin: 0%">Welcome to </h1><br>
+    <h1 style="font-size: 80px; padding: 0%;margin: 0%">Midis Group</h1><br>
+    <h1 style="padding: 0%;margin: 0%">Eid-Al-Adha Quiz</h1>
+    <div>
+        <label> Please enter your name: </label>
+        <input type="text" id="name" name="name" style="margin-block-start: auto; font-size: 20px;" ><br>
+    </div>
+
+    <div>
+        <button id="welcomebutton" onclick="welcomefunction()" onclick="AddDocument_AutoID">Confirm</button>
+    </div>
+    <div>
+        <h2 id="nonameerror" style="display: none" >Please make sure you enter your name (no special characters or numbers allowed)</h2>
+    </div>
+</div>
+
+<div id="difficulty" style="display:none;">
+    <h1 id="difficultytext">Please select the difficulty</h1>
+
+    <div>
+        <button id="easy" class="easybutton" onclick="setdifficulty(5)">Easy</button>
+        <button id="medium" class="mediumbutton" onclick="setdifficulty(10)">Medium</button>
+        <button id="hard" class="hardbutton" onclick="setdifficulty(15)">Hard</button>
+    </div>
+    <div>
+
+    </div>
+</div>
+
+<div id="quiz" style="display: none; place-items: center">
+    <div id="divq1" style="position:absolute; top: 0px; display: inline-block">
+        <div style="grid-area: inner-div;"><h2 id="question1" style="display: none" >The capital of Canada is Toronto</h2></div>
+        <div id="divbuttons1" style="display: none;">
+            <button onclick="myFunction1(1,1,0)" id="button1t" class="truebutton">True</button>
+            <button onclick="myFunction1(1,0,0)" id="button1f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq2" style="position:absolute; top: 0px;" >
+        <div><h2 id="question2" style="display: none" >The population of Dubai is more than 10 million</h2></div>
+        <div id="divbuttons2" style="display: none;">
+            <button onclick="myFunction1(2,1,0)" id="button2t" class="truebutton">True</button>
+            <button onclick="myFunction1(2,0,0)" id="button2f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq3" style="position:absolute; top: 0px">
+        <div> <h2 id="question3" style="display: none">Dolphins are the biggest mammals in the sea</h2><br></div>
+        <div id="divbuttons3" style="display: none;">
+            <button onclick="myFunction1(3,1,0)" id="button3t" class="truebutton">True</button>
+            <button onclick="myFunction1(3,0,0)" id="button3f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq4" style="position:absolute; top: 0px">
+        <div><h2 id="question4" style="display: none">Utah is a state in the US</h2><br></div>
+        <div id="divbuttons4" style="display: none;">
+            <button onclick="myFunction1(4,1,1)" id="button4t" class="truebutton">True</button>
+            <button onclick="myFunction1(4,0,1)" id="button4f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq5" style="position:absolute; top: 0px">
+        <div><h2 id="question5" style="display: none">Abu Dhabi is the capital of the UAE</h2><br></div>
+        <div id="divbuttons5" style="display: none;">
+            <button onclick="myFunction1(5,1,1)" id="button5t" class="truebutton">True</button>
+            <button onclick="myFunction1(5,0,1)" id="button5f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq6" style="position:absolute; top: 0px">
+        <div><h2 id="question6" style="display: none">A cross between a horse and a zebra is called a 'Hobra'</h2><br></div>
+        <div id="divbuttons6" style="display: none;">
+            <button onclick="myFunction1(6,1,0)" id="button6t" class="truebutton">True</button>
+            <button onclick="myFunction1(6,0,0)" id="button6f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq7" style="position:absolute; top: 0px">
+        <div><h2 id="question7" style="display: none">Alliumphobia is a fear of garlic</h2><br></div>
+        <div id="divbuttons7" style="display: none;">
+            <button onclick="myFunction1(7,1,1)" id="button7t" class="truebutton">True</button>
+            <button onclick="myFunction1(7,0,1)" id="button7f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq8" style="position:absolute; top: 0px">
+        <div><h2 id="question8" style="display: none">Marrakesh is the capital of Morocco</h2><br></div>
+        <div id="divbuttons8" style="display: none;">
+            <button onclick="myFunction1(8,1,0)" id="button8t" class="truebutton">True</button>
+            <button onclick="myFunction1(8,0,0)" id="button8f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq9" style="position:absolute; top: 0px">
+        <div><h2 id="question9" style="display: none">There are five different blood groups</h2><br></div>
+        <div id="divbuttons9" style="display: none;">
+            <button onclick="myFunction1(9,1,0)" id="button9t" class="truebutton">True</button>
+            <button onclick="myFunction1(9,0,0)" id="button9f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq10" style="position:absolute; top: 0px">
+        <div><h2 id="question10" style="display: none">Alaska is the biggest American state in square miles</h2><br></div>
+        <div id="divbuttons10" style="display: none;">
+            <button onclick="myFunction1(10,1,1)" id="button10t" class="truebutton">True</button>
+            <button onclick="myFunction1(10,0,1)" id="button10f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq11" style="position:absolute; top: 0px">
+        <div><h2 id="question11" style="display: none">Australia is wider than the moon</h2><br></div>
+        <div id="divbuttons11" style="display: none;">
+            <button onclick="myFunction1(11,1,1)" id="button11t" class="truebutton">True</button>
+            <button onclick="myFunction1(11,0,1)" id="button11f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq12" style="position:absolute; top: 0px">
+        <div><h2 id="question12" style="display: none">Coffee is made from berries</h2><br></div>
+        <div id="divbuttons12" style="display: none;">
+            <button onclick="myFunction1(12,1,1)" id="button12t" class="truebutton">True</button>
+            <button onclick="myFunction1(12,0,1)" id="button12f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq13" style="position:absolute; top: 0px">
+        <div><h2 id="question13" style="display: none">An octopus has three hearts</h2><br></div>
+        <div id="divbuttons13" style="display: none;">
+            <button onclick="myFunction1(13,1,1)" id="button13t" class="truebutton">True</button>
+            <button onclick="myFunction1(13,0,1)" id="button13f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq14" style="position:absolute; top: 0px">
+        <div><h2 id="question14" style="display: none">Venus is the hottest planet in the solar system</h2><br></div>
+        <div id="divbuttons14" style="display: none;">
+            <button onclick="myFunction1(14,1,1)" id="button14t" class="truebutton">True</button>
+            <button onclick="myFunction1(14,0,1)" id="button14f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq15" style="position:absolute; top: 0px">
+        <div><h2 id="question15" style="display: none">Goldfish have a two second memory</h2><br></div>
+        <div id="divbuttons15" style="display: none;">
+            <button onclick="myFunction1(15,1,0)" id="button15t" class="truebutton">True</button>
+            <button onclick="myFunction1(15,0,0)" id="button15f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq16" style="position:absolute; top: 0px">
+        <div><h2 id="question16" style="display: none">In the English language there is no word that rhymes with orange</h2><br></div>
+        <div id="divbuttons16" style="display: none;">
+            <button onclick="myFunction1(16,1,1)" id="button16t" class="truebutton">True</button>
+            <button onclick="myFunction1(16,0,1)" id="button16f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq17" style="position:absolute; top: 0px">
+        <div><h2 id="question17" style="display: none">The capital of Australia is Sydney</h2><br></div>
+        <div id="divbuttons17" style="display: none;">
+            <button onclick="myFunction1(17,1,0)" id="button17t" class="truebutton">True</button>
+            <button onclick="myFunction1(17,0,0)" id="button17f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq18" style="position:absolute; top: 0px">
+        <div><h2 id="question18" style="display: none">The longest river in the world is the Amazon River</h2><br></div>
+        <div id="divbuttons18" style="display: none;">
+            <button onclick="myFunction1(18,1,0)" id="button18t" class="truebutton">True</button>
+            <button onclick="myFunction1(18,0,0)" id="button18f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq19" style="position:absolute; top: 0px">
+        <div><h2 id="question19" style="display: none">In Scotland, the unicorn is their national animal</h2><br></div>
+        <div id="divbuttons19" style="display: none;">
+            <button onclick="myFunction1(19,1,1)" id="button19t" class="truebutton">True</button>
+            <button onclick="myFunction1(19,0,1)" id="button19f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq20" style="position:absolute; top: 0px">
+        <div><h2 id="question20" style="display: none">The first living animal sent into space were fruit flies</h2><br></div>
+        <div id="divbuttons20" style="display: none;">
+            <button onclick="myFunction1(20,1,1)" id="button20t" class="truebutton">True</button>
+            <button onclick="myFunction1(20,0,1)" id="button20f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq21" style="position:absolute; top: 0px">
+        <div><h2 id="question21" style="display: none">South Africa officially has two capital cities</h2><br></div>
+        <div id="divbuttons21" style="display: none;">
+            <button onclick="myFunction1(21,1,0)" id="button21t" class="truebutton">True</button>
+            <button onclick="myFunction1(21,0,0)" id="button21f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq22" style="position:absolute; top: 0px">
+        <div><h2 id="question22" style="display: none">The Atlantic Ocean is the world’s biggest ocean</h2><br></div>
+        <div id="divbuttons22" style="display: none;">
+            <button onclick="myFunction1(22,1,0)" id="button22t" class="truebutton">True</button>
+            <button onclick="myFunction1(22,0,0)" id="button22f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq23" style="position:absolute; top: 0px">
+        <div><h2 id="question23" style="display: none">Nepal is the only country in the world without a rectangular flag</h2><br></div>
+        <div id="divbuttons23" style="display: none;">
+            <button onclick="myFunction1(23,1,1)" id="button23t" class="truebutton">True</button>
+            <button onclick="myFunction1(23,0,1)" id="button23f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq24" style="position:absolute; top: 0px">
+        <div><h2 id="question24" style="display: none">The USA has the longest coastline in the world</h2><br></div>
+        <div id="divbuttons24" style="display: none;">
+            <button onclick="myFunction1(24,1,0)" id="button24t" class="truebutton">True</button>
+            <button onclick="myFunction1(24,0,0)" id="button24f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq25" style="position:absolute; top: 0px">
+        <div><h2 id="question25" style="display: none">The liver is the largest organ in the human body</h2><br></div>
+        <div id="divbuttons25" style="display: none;">
+            <button onclick="myFunction1(25,1,0)" id="button25t" class="truebutton">True</button>
+            <button onclick="myFunction1(25,0,0)" id="button25f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq26" style="position:absolute; top: 0px">
+        <div><h2 id="question26" style="display: none">Confucius is a world-renowned Latin philosopher</h2><br></div>
+        <div id="divbuttons26" style="display: none;">
+            <button onclick="myFunction1(26,1,0)" id="button26t" class="truebutton">True</button>
+            <button onclick="myFunction1(26,0,0)" id="button26f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq27" style="position:absolute; top: 0px">
+        <div><h2 id="question27" style="display: none">Mount Fuji is the highest mountain in Japan</h2><br></div>
+        <div id="divbuttons27" style="display: none;">
+            <button onclick="myFunction1(27,1,1)" id="button27t" class="truebutton">True</button>
+            <button onclick="myFunction1(27,0,1)" id="button27f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq28" style="position:absolute; top: 0px">
+        <div><h2 id="question28" style="display: none">Steak contains more protein per calorie than a regular-sized broccoli</h2><br></div>
+        <div id="divbuttons28" style="display: none;">
+            <button onclick="myFunction1(28,1,0)" id="button28t" class="truebutton">True</button>
+            <button onclick="myFunction1(28,0,0)" id="button28f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq29" style="position:absolute; top: 0px">
+        <div><h2 id="question29" style="display: none">Athlete Usain Bolt is faster than a cheetah</h2><br></div>
+        <div id="divbuttons29" style="display: none;">
+            <button onclick="myFunction1(29,1,0)" id="button29t" class="truebutton">True</button>
+            <button onclick="myFunction1(29,0,0)" id="button29f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq30" style="position:absolute; top: 0px">
+        <div><h2 id="question30" style="display: none">Indira Gandhi was the first female Prime Minister of India</h2><br></div>
+        <div id="divbuttons30" style="display: none;">
+            <button onclick="myFunction1(30,1,1)" id="button30t" class="truebutton">True</button>
+            <button onclick="myFunction1(30,0,1)" id="button30f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq31" style="position:absolute; top: 0px">
+        <div><h2 id="question31" style="display: none">The lighter was invented before the matches</h2><br></div>
+        <div id="divbuttons31" style="display: none;">
+            <button onclick="myFunction1(31,1,1)" id="button31t" class="truebutton">True</button>
+            <button onclick="myFunction1(31,0,1)" id="button31f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq32" style="position:absolute; top: 0px">
+        <div><h2 id="question32" style="display: none">Rio de Janeiro is the capital city of Brazil</h2><br></div>
+        <div id="divbuttons32" style="display: none;">
+            <button onclick="myFunction1(32,1,0)" id="button32t" class="truebutton">True</button>
+            <button onclick="myFunction1(32,0,0)" id="button32f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq33" style="position:absolute; top: 0px">
+        <div><h2 id="question33" style="display: none">Human teeth are just as strong as the teeth of a mature shark</h2><br></div>
+        <div id="divbuttons33" style="display: none;">
+            <button onclick="myFunction1(33,1,1)" id="button33t" class="truebutton">True</button>
+            <button onclick="myFunction1(33,0,1)" id="button33f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq34" style="position:absolute; top: 0px">
+        <div><h2 id="question34" style="display: none">Lightning never strikes in the same place twice.</h2><br></div>
+        <div id="divbuttons34" style="display: none;">
+            <button onclick="myFunction1(34,1,0)" id="button34t" class="truebutton">True</button>
+            <button onclick="myFunction1(34,0,0)" id="button34f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq35" style="position:absolute; top: 0px">
+        <div><h2 id="question35" style="display: none">You taste different flavours with different parts of your tongue.</h2><br></div>
+        <div id="divbuttons35" style="display: none;">
+            <button onclick="myFunction1(35,1,0)" id="button35t" class="truebutton">True</button>
+            <button onclick="myFunction1(35,0,0)" id="button35f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq36" style="position:absolute; top: 0px">
+        <div><h2 id="question36" style="display: none">There are five red stripes in the United States flag</h2><br></div>
+        <div id="divbuttons36" style="display: none;">
+            <button onclick="myFunction1(36,1,0)" id="button36t" class="truebutton">True</button>
+            <button onclick="myFunction1(36,0,0)" id="button36f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq37" style="position:absolute; top: 0px">
+        <div><h2 id="question37" style="display: none">Humans can’t breathe and swallow at the same time</h2><br></div>
+        <div id="divbuttons37" style="display: none;">
+            <button onclick="myFunction1(37,1,1)" id="button37t" class="truebutton">True</button>
+            <button onclick="myFunction1(37,0,1)" id="button37f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq38" style="position:absolute; top: 0px">
+        <div><h2 id="question38" style="display: none">If you exposed glass of water to space, it would boil rather than freeze</h2><br></div>
+        <div id="divbuttons38" style="display: none;">
+            <button onclick="myFunction1(38,1,1)" id="button38t" class="truebutton">True</button>
+            <button onclick="myFunction1(38,0,1)" id="button38f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq39" style="position:absolute; top: 0px">
+        <div><h2 id="question39" style="display: none">It's possible for hot water to freeze more quickly than cold water.</h2><br></div>
+        <div id="divbuttons39" style="display: none;">
+            <button onclick="myFunction1(39,1,1)" id="button39t" class="truebutton">True</button>
+            <button onclick="myFunction1(39,0,1)" id="button39f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq40" style="position:absolute; top: 0px">
+        <div><h2 id="question40" style="display: none">Elephants can hear through their feet</h2><br></div>
+        <div id="divbuttons40" style="display: none;">
+            <button onclick="myFunction1(40,1,1)" id="button40t" class="truebutton">True</button>
+            <button onclick="myFunction1(40,0,1)" id="button40f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq41" style="position:absolute; top: 0px">
+        <div><h2 id="question41" style="display: none">There Is Only One Even Prime Number</h2><br></div>
+        <div id="divbuttons41" style="display: none;">
+            <button onclick="myFunction1(41,1,1)" id="button41t" class="truebutton">True</button>
+            <button onclick="myFunction1(41,0,1)" id="button41f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq42" style="position:absolute; top: 0px">
+        <div><h2 id="question42" style="display: none">Bats are blind.</h2><br></div>
+        <div id="divbuttons42" style="display: none;">
+            <button onclick="myFunction1(42,1,0)" id="button42t" class="truebutton">True</button>
+            <button onclick="myFunction1(42,0,0)" id="button42f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq43" style="position:absolute; top: 0px">
+        <div><h2 id="question43" style="display: none">Greenland is the largest island in the world</h2><br></div>
+        <div id="divbuttons43" style="display: none;">
+            <button onclick="myFunction1(43,1,1)" id="button43t" class="truebutton">True</button>
+            <button onclick="myFunction1(43,0,1)" id="button43f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq44" style="position:absolute; top: 0px">
+        <div><h2 id="question44" style="display: none">Vatican City is the smallest country in the world</h2><br></div>
+        <div id="divbuttons44" style="display: none;">
+            <button onclick="myFunction1(44,1,1)" id="button44t" class="truebutton">True</button>
+            <button onclick="myFunction1(44,0,1)" id="button44f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq45" style="position:absolute; top: 0px">
+        <div><h2 id="question45" style="display: none">Most of the human brain is made of muscle</h2><br></div>
+        <div id="divbuttons45" style="display: none;">
+            <button onclick="myFunction1(45,1,0)" id="button45t" class="truebutton">True</button>
+            <button onclick="myFunction1(45,0,0)" id="button45f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq46" style="position:absolute; top: 0px">
+        <div><h2 id="question46" style="display: none">Taste buds can only be found on the tongue</h2><br></div>
+        <div id="divbuttons46" style="display: none;">
+            <button onclick="myFunction1(46,1,0)" id="button46t" class="truebutton">True</button>
+            <button onclick="myFunction1(46,0,0)" id="button46f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq47" style="position:absolute; top: 0px">
+        <div><h2 id="question47" style="display: none">Pineapples grow on trees</h2><br></div>
+        <div id="divbuttons47" style="display: none;">
+            <button onclick="myFunction1(47,1,0)" id="button47t" class="truebutton">True</button>
+            <button onclick="myFunction1(47,0,0)" id="button47f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq48" style="position:absolute; top: 0px">
+        <div><h2 id="question48" style="display: none">French fries originated from France.</h2><br></div>
+        <div id="divbuttons48" style="display: none;">
+            <button onclick="myFunction1(48,1,0)" id="button48t" class="truebutton">True</button>
+            <button onclick="myFunction1(48,0,0)" id="button48f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq49" style="position:absolute; top: 0px">
+        <div><h2 id="question49" style="display: none">Vanilla is the world’s most expensive spice.</h2><br></div>
+        <div id="divbuttons49" style="display: none;">
+            <button onclick="myFunction1(49,1,0)" id="button49t" class="truebutton">True</button>
+            <button onclick="myFunction1(49,0,0)" id="button49f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq50" style="position:absolute; top: 0px">
+        <div><h2 id="question50" style="display: none">Brazil has won the most world cups</h2><br></div>
+        <div id="divbuttons50" style="display: none;">
+            <button onclick="myFunction1(50,1,1)" id="button50t" class="truebutton">True</button>
+            <button onclick="myFunction1(50,0,1)" id="button50f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq51" style="position:absolute; top: 0px">
+        <div><h2 id="question51" style="display: none">The letter “T” is the most common in the English Language.</h2><br></div>
+        <div id="divbuttons51" style="display: none;">
+            <button onclick="myFunction1(51,1,0)" id="button51t" class="truebutton">True</button>
+            <button onclick="myFunction1(51,0,0)" id="button51f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq52" style="position:absolute; top: 0px">
+        <div><h2 id="question52" style="display: none">Fortune cookies were invented in China</h2><br></div>
+        <div id="divbuttons52" style="display: none;">
+            <button onclick="myFunction1(52,1,0)" id="button52t" class="truebutton">True</button>
+            <button onclick="myFunction1(52,0,0)" id="button52f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq53" style="position:absolute; top: 0px">
+        <div><h2 id="question53" style="display: none">Polar bears’ skin is black</h2><br></div>
+        <div id="divbuttons53" style="display: none;">
+            <button onclick="myFunction1(53,1,1)" id="button53t" class="truebutton">True</button>
+            <button onclick="myFunction1(53,0,1)" id="button53f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq54" style="position:absolute; top: 0px">
+        <div><h2 id="question54" style="display: none">Jupiter is the fifth planet from the sun.</h2><br></div>
+        <div id="divbuttons54" style="display: none;">
+            <button onclick="myFunction1(54,1,1)" id="button54t" class="truebutton">True</button>
+            <button onclick="myFunction1(54,0,1)" id="button54f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq55" style="position:absolute; top: 0px">
+        <div><h2 id="question55" style="display: none">Lithium has the atomic number 17</h2><br></div>
+        <div id="divbuttons55" style="display: none;">
+            <button onclick="myFunction1(55,1,0)" id="button55t" class="truebutton">True</button>
+            <button onclick="myFunction1(55,0,0)" id="button55f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq56" style="position:absolute; top: 0px">
+        <div><h2 id="question56" style="display: none">Hotmail was launched in 1996</h2><br></div>
+        <div id="divbuttons56" style="display: none;">
+            <button onclick="myFunction1(56,1,1)" id="button56t" class="truebutton">True</button>
+            <button onclick="myFunction1(56,0,1)" id="button56f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq57" style="position:absolute; top: 0px">
+        <div><h2 id="question57" style="display: none">There are some wasps that make honey</h2><br></div>
+        <div id="divbuttons57" style="display: none;">
+            <button onclick="myFunction1(57,1,1)" id="button57t" class="truebutton">True</button>
+            <button onclick="myFunction1(57,0,1)" id="button57f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq58" style="position:absolute; top: 0px">
+        <div><h2 id="question58" style="display: none">The ‘black box’ in an aeroplane is black</h2><br></div>
+        <div id="divbuttons58" style="display: none;">
+            <button onclick="myFunction1(58,1,0)" id="button58t" class="truebutton">True</button>
+            <button onclick="myFunction1(58,0,0)" id="button58f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq59" style="position:absolute; top: 0px">
+        <div><h2 id="question59" style="display: none">Approximately one quarter of human bones are in the feet</h2><br></div>
+        <div id="divbuttons59" style="display: none;">
+            <button onclick="myFunction1(59,1,1)" id="button59t" class="truebutton">True</button>
+            <button onclick="myFunction1(59,0,1)" id="button59f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq60" style="position:absolute; top: 0px">
+        <div><h2 id="question60" style="display: none">No countries in the world have the colour purple in their flags</h2><br></div>
+        <div id="divbuttons60" style="display: none;">
+            <button onclick="myFunction1(60,1,0)" id="button60t" class="truebutton">True</button>
+            <button onclick="myFunction1(60,0,0)" id="button60f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq61" style="position:absolute; top: 0px">
+        <div><h2 id="question61" style="display: none">All reptiles are completely deaf</h2><br></div>
+        <div id="divbuttons61" style="display: none;">
+            <button onclick="myFunction1(61,1,1)" id="button61t" class="truebutton">True</button>
+            <button onclick="myFunction1(61,0,1)" id="button61f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq62" style="position:absolute; top: 0px">
+        <div><h2 id="question62" style="display: none">Every giant Panda around the world is property of the government of China</h2><br></div>
+        <div id="divbuttons62" style="display: none;">
+            <button onclick="myFunction1(62,1,1)" id="button62t" class="truebutton">True</button>
+            <button onclick="myFunction1(62,0,1)" id="button62f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq63" style="position:absolute; top: 0px">
+        <div><h2 id="question63" style="display: none">The lungs are the body’s largest organ</h2><br></div>
+        <div id="divbuttons63" style="display: none;">
+            <button onclick="myFunction1(63,1,0)" id="button63t" class="truebutton">True</button>
+            <button onclick="myFunction1(63,0,0)" id="button63f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq64" style="position:absolute; top: 0px">
+        <div><h2 id="question64" style="display: none">The skull is the strongest bone in the body</h2><br></div>
+        <div id="divbuttons64" style="display: none;">
+            <button onclick="myFunction1(64,1,0)" id="button64t" class="truebutton">True</button>
+            <button onclick="myFunction1(64,0,0)" id="button64f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq65" style="position:absolute; top: 0px">
+        <div><h2 id="question65" style="display: none">Honey never expires</h2><br></div>
+        <div id="divbuttons65" style="display: none;">
+            <button onclick="myFunction1(65,1,1)" id="button65t" class="truebutton">True</button>
+            <button onclick="myFunction1(65,0,1)" id="button65f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq66" style="position:absolute; top: 0px">
+        <div><h2 id="question66" style="display: none">It takes seven years to digest chewing gum</h2><br></div>
+        <div id="divbuttons66" style="display: none;">
+            <button onclick="myFunction1(66,1,0)" id="button66t" class="truebutton">True</button>
+            <button onclick="myFunction1(66,0,0)" id="button66f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq67" style="position:absolute; top: 0px">
+        <div><h2 id="question67" style="display: none">Ivanti is headquartered in California</h2><br></div>
+        <div id="divbuttons67" style="display: none;">
+            <button onclick="myFunction1(67,1,0)" id="button67t" class="truebutton">True</button>
+            <button onclick="myFunction1(67,0,0)" id="button67f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq68" style="position:absolute; top: 0px">
+        <div><h2 id="question68" style="display: none">Ivanti is headquartered in New York</h2><br></div>
+        <div id="divbuttons68" style="display: none;">
+            <button onclick="myFunction1(68,1,0)" id="button68t" class="truebutton">True</button>
+            <button onclick="myFunction1(68,0,0)" id="button68f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq69" style="position:absolute; top: 0px">
+        <div><h2 id="question69" style="display: none">Ivanti is headquartered in Utah</h2><br></div>
+        <div id="divbuttons69" style="display: none;">
+            <button onclick="myFunction1(69,1,1)" id="button69t" class="truebutton">True</button>
+            <button onclick="myFunction1(69,0,1)" id="button69f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq70" style="position:absolute; top: 0px">
+        <div><h2 id="question70" style="display: none">Ivanti was formed in 2016</h2><br></div>
+        <div id="divbuttons70" style="display: none;">
+            <button onclick="myFunction1(70,1,0)" id="button70t" class="truebutton">True</button>
+            <button onclick="myFunction1(70,0,0)" id="button70f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq71" style="position:absolute; top: 0px">
+        <div><h2 id="question71" style="display: none">Ivanti was formed in 2018</h2><br></div>
+        <div id="divbuttons71" style="display: none;">
+            <button onclick="myFunction1(71,1,0)" id="button71t" class="truebutton">True</button>
+            <button onclick="myFunction1(71,0,0)" id="button71f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq72" style="position:absolute; top: 0px">
+        <div><h2 id="question72" style="display: none">Ivanti was formed in 2017</h2><br></div>
+        <div id="divbuttons72" style="display: none;">
+            <button onclick="myFunction1(72,1,1)" id="button72t" class="truebutton">True</button>
+            <button onclick="myFunction1(72,0,1)" id="button72f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq73" style="position:absolute; top: 0px">
+        <div><h2 id="question73" style="display: none">Hot and cold water sound the same when poured</h2><br></div>
+        <div id="divbuttons73" style="display: none;">
+            <button onclick="myFunction1(73,1,0)" id="button73t" class="truebutton">True</button>
+            <button onclick="myFunction1(73,0,0)" id="button73f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq74" style="position:absolute; top: 0px">
+        <div><h2 id="question74" style="display: none">The five rings on the Olympic flag are interlocking</h2><br></div>
+        <div id="divbuttons74" style="display: none;">
+            <button onclick="myFunction1(74,1,1)" id="button74t" class="truebutton">True</button>
+            <button onclick="myFunction1(74,0,1)" id="button74f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq75" style="position:absolute; top: 0px">
+        <div><h2 id="question75" style="display: none">Fish cannot blink</h2><br></div>
+        <div id="divbuttons75" style="display: none;">
+            <button onclick="myFunction1(75,1,1)" id="button75t" class="truebutton">True</button>
+            <button onclick="myFunction1(75,0,1)" id="button75f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq76" style="position:absolute; top: 0px">
+        <div><h2 id="question76" style="display: none">More than half of the population of Dubai are expats</h2><br></div>
+        <div id="divbuttons76" style="display: none;">
+            <button onclick="myFunction1(76,1,1)" id="button76t" class="truebutton">True</button>
+            <button onclick="myFunction1(76,0,1)" id="button76f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq77" style="position:absolute; top: 0px">
+        <div><h2 id="question77" style="display: none">Burj Al Arab is the tallest building in the UAE</h2><br></div>
+        <div id="divbuttons77" style="display: none;">
+            <button onclick="myFunction1(77,1,0)" id="button77t" class="truebutton">True</button>
+            <button onclick="myFunction1(77,0,0)" id="button77f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq78" style="position:absolute; top: 0px">
+        <div><h2 id="question78" style="display: none">Burj Khalifa is the tallest building in the UAE</h2><br></div>
+        <div id="divbuttons78" style="display: none;">
+            <button onclick="myFunction1(78,1,1)" id="button78t" class="truebutton">True</button>
+            <button onclick="myFunction1(78,0,1)" id="button78f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq79" style="position:absolute; top: 0px">
+        <div><h2 id="question79" style="display: none">Mall of the Emirates is the largest mall in the UAE</h2><br></div>
+        <div id="divbuttons79" style="display: none;">
+            <button onclick="myFunction1(79,1,0)" id="button79t" class="truebutton">True</button>
+            <button onclick="myFunction1(79,0,0)" id="button79f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq80" style="position:absolute; top: 0px">
+        <div><h2 id="question80" style="display: none">Dubai Mall is the largest mall in the UAE</h2><br></div>
+        <div id="divbuttons80" style="display: none;">
+            <button onclick="myFunction1(80,1,1)" id="button80t" class="truebutton">True</button>
+            <button onclick="myFunction1(80,0,1)" id="button80f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq81" style="position:absolute; top: 0px">
+        <div><h2 id="question81" style="display: none">There are as many males in dubai as females</h2><br></div>
+        <div id="divbuttons81" style="display: none;">
+            <button onclick="myFunction1(81,1,0)" id="button81t" class="truebutton">True</button>
+            <button onclick="myFunction1(81,0,0)" id="button81f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq82" style="position:absolute; top: 0px">
+        <div><h2 id="question82" style="display: none">There are 7 emirates in the UAE</h2><br></div>
+        <div id="divbuttons82" style="display: none;">
+            <button onclick="myFunction1(82,1,1)" id="button82t" class="truebutton">True</button>
+            <button onclick="myFunction1(82,0,1)" id="button82f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq83" style="position:absolute; top: 0px">
+        <div><h2 id="question83" style="display: none">There are 8 cities in the UAE.</h2><br></div>
+        <div id="divbuttons83" style="display: none;">
+            <button onclick="myFunction1(83,1,1)" id="button83t" class="truebutton">True</button>
+            <button onclick="myFunction1(83,0,1)" id="button83f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq84" style="position:absolute; top: 0px">
+        <div><h2 id="question84" style="display: none">There are only 7 cities in the UAE.</h2><br></div>
+        <div id="divbuttons84" style="display: none;">
+            <button onclick="myFunction1(84,1,0)" id="button84t" class="truebutton">True</button>
+            <button onclick="myFunction1(84,0,0)" id="button84f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq85" style="position:absolute; top: 0px">
+        <div><h2 id="question85" style="display: none">Before 1972, the UAE was under British rule</h2><br></div>
+        <div id="divbuttons85" style="display: none;">
+            <button onclick="myFunction1(85,1,1)" id="button85t" class="truebutton">True</button>
+            <button onclick="myFunction1(85,0,1)" id="button85f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq86" style="position:absolute; top: 0px">
+        <div><h2 id="question86" style="display: none">The UAE was established in 2nd December 1981</h2><br></div>
+        <div id="divbuttons86" style="display: none;">
+            <button onclick="myFunction1(86,1,0)" id="button86t" class="truebutton">True</button>
+            <button onclick="myFunction1(86,0,0)" id="button86f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq87" style="position:absolute; top: 0px">
+        <div><h2 id="question87" style="display: none">Oman borders with the UAE.</h2><br></div>
+        <div id="divbuttons87" style="display: none;">
+            <button onclick="myFunction1(87,1,1)" id="button87t" class="truebutton">True</button>
+            <button onclick="myFunction1(87,0,1)" id="button87f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq88" style="position:absolute; top: 0px">
+        <div><h2 id="question88" style="display: none">Iraq borders with the UAE</h2><br></div>
+        <div id="divbuttons88" style="display: none;">
+            <button onclick="myFunction1(88,1,0)" id="button88t" class="truebutton">True</button>
+            <button onclick="myFunction1(88,0,0)" id="button88f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq89" style="position:absolute; top: 0px">
+        <div><h2 id="question89" style="display: none">Sheikh Zayed mosque is located in Dubai</h2><br></div>
+        <div id="divbuttons89" style="display: none;">
+            <button onclick="myFunction1(89,1,0)" id="button89t" class="truebutton">True</button>
+            <button onclick="myFunction1(89,0,0)" id="button89f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq90" style="position:absolute; top: 0px">
+        <div><h2 id="question90" style="display: none">Sheikh Zayed mosque is located in Ras al Khaimah</h2><br></div>
+        <div id="divbuttons90" style="display: none;">
+            <button onclick="myFunction1(90,1,0)" id="button90t" class="truebutton">True</button>
+            <button onclick="myFunction1(90,0,0)" id="button90f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq91" style="position:absolute; top: 0px">
+        <div><h2 id="question91" style="display: none">The UAE dirham was introduced in 1973.</h2><br></div>
+        <div id="divbuttons91" style="display: none;">
+            <button onclick="myFunction1(91,1,1)" id="button91t" class="truebutton">True</button>
+            <button onclick="myFunction1(91,0,1)" id="button91f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq92" style="position:absolute; top: 0px">
+        <div><h2 id="question92" style="display: none">Abu dhabi has a larger population than Dubai</h2><br></div>
+        <div id="divbuttons92" style="display: none;">
+            <button onclick="myFunction1(92,1,0)" id="button92t" class="truebutton">True</button>
+            <button onclick="myFunction1(92,0,0)" id="button92f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq93" style="position:absolute; top: 0px">
+        <div><h2 id="question93" style="display: none">There is no Formula one race held in the Middle east</h2><br></div>
+        <div id="divbuttons93" style="display: none;">
+            <button onclick="myFunction1(93,1,0)" id="button93t" class="truebutton">True</button>
+            <button onclick="myFunction1(93,0,0)" id="button93f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq94" style="position:absolute; top: 0px">
+        <div><h2 id="question94" style="display: none">Cristiano Ronaldo plays for Real Madrid</h2><br></div>
+        <div id="divbuttons94" style="display: none;">
+            <button onclick="myFunction1(94,1,0)" id="button94t" class="truebutton">True</button>
+            <button onclick="myFunction1(94,0,0)" id="button94f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+    <div id="divq95" style="position:absolute; top: 0px">
+        <div><h2 id="question95" style="display: none">Lionel Messi plays for Barcelona</h2><br></div>
+        <div id="divbuttons95" style="display: none;">
+            <button onclick="myFunction1(95,1,0)" id="button95t" class="truebutton">True</button>
+            <button onclick="myFunction1(95,0,0)" id="button95f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq96" style="position:absolute; top: 0px">
+        <div><h2 id="question96" style="display: none">Rafael Nadal has the most Grand slams</h2><br></div>
+        <div id="divbuttons96" style="display: none;">
+            <button onclick="myFunction1(96,1,1)" id="button96t" class="truebutton">True</button>
+            <button onclick="myFunction1(96,0,1)" id="button96f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq97" style="position:absolute; top: 0px">
+        <div><h2 id="question97" style="display: none">Bill Gates is currently the world's richest man</h2><br></div>
+        <div id="divbuttons97" style="display: none;">
+            <button onclick="myFunction1(97,1,0)" id="button97t" class="truebutton">True</button>
+            <button onclick="myFunction1(97,0,0)" id="button97f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq98" style="position:absolute; top: 0px">
+        <div><h2 id="question98" style="display: none">Jeff Bezos is currently the world's richest man</h2><br></div>
+        <div id="divbuttons98" style="display: none;">
+            <button onclick="myFunction1(98,1,0)" id="button98t" class="truebutton">True</button>
+            <button onclick="myFunction1(98,0,0)" id="button98f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq99" style="position:absolute; top: 0px">
+        <div><h2 id="question99" style="display: none">Elon Musk is currently the world's richest man</h2><br></div>
+        <div id="divbuttons99" style="display: none;">
+            <button onclick="myFunction1(99,1,1)" id="button99t" class="truebutton">True</button>
+            <button onclick="myFunction1(99,0,1)" id="button99f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+    <div id="divq100" style="position:absolute; top: 0px">
+        <div><h2 id="question100" style="display: none">Silicon Valley is in California</h2><br></div>
+        <div id="divbuttons100" style="display: none;">
+            <button onclick="myFunction1(100,1,1)" id="button100t" class="truebutton">True</button>
+            <button onclick="myFunction1(100,0,1)" id="button100f" class="falsebutton">False</button>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="timer"  style="display:none;">
+
+</div>
+
+
+<div><h3 id="result1" style="display: none">'s result is poor</h3><br></div>
+<div><h3 id="result2" style="display: none">'s result is mid</h3><br></div>
+<div><h3 id="result3" style="display: none">'s result is very good</h3><br></div>
+<div><h3 id="result4" style="display: none">'s result is excellent</h3><br></div>
+
+<div id="preleaderboard" style="display: none">
+    <h2>Submit score to leaderboard</h2>
+    <button id="submitbutton">
+        submit
+    </button>
+</div>
+<div id="scorecounter" style="display: none">0</div>
+<div id="diff" style="display: none"></div>
+
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    //import { initializeApp } from "firebase/app";
+    //import { getFirestore } from "firebase/firestore";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyC3ZuD28dio3jYeegBy6TdoQm5SVEGPJvw",
+        authDomain: "game-54793.firebaseapp.com",
+        databaseURL: "https://game-54793-default-rtdb.firebaseio.com",
+        projectId: "game-54793",
+        storageBucket: "game-54793.appspot.com",
+        messagingSenderId: "503769841115",
+        appId: "1:503769841115:web:83e867bec0ce93eacc3bfe",
+        measurementId: "G-HGXXN8CGH9"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    import {
+        getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField
+    }
+        from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
+
+    const db = getFirestore();
+
+
+    async function AddDocument_CustomID(){
+        var id = "CurrentPlayer"
+        var ref = doc(db, "PlayerList", id);
+        var name = document.getElementById('name').value;
+        var score = document.getElementById("scorecounter").innerHTML;
+        var difficulty = document.getElementById("diff").innerHTML;
+        const docRef = await setDoc(
+            ref,{
+                PlayerName: name,
+                Score: score,
+                Difficulty: difficulty
+            }
+        )
+            .then(()=>{
+                //document.getElementById("perfect").style.display = "block";
+                //alert("data added succesfully");
+            })
+            .catch((error)=>{
+                alert("Unsuccesful operation, error:"+error);
+            })
+    }
+
+
+    async function ReadDocument(){
+        document.getElementById("preleaderboard").style.display = "none";
+        var val = document.getElementById("scorecounter").innerHTML;
+
+
+        var diff = document.getElementById("diff").innerHTML;
+
+
+        setTimeout(async function () {
+            var flagcheck1 = true;
+            var easycount =0;
+            for (let i = 1; flagcheck1==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "easy"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    easycount++;
+                }
+                else
+                {
+                    flagcheck1 = false;
+                }
+
+            }
+
+            var flagcheck2 = true;
+            var mediumcount =0;
+            for (let i = 1; flagcheck2==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "medium"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    mediumcount++;
+                }
+                else
+                {
+                    flagcheck2 = false;
+                }
+
+            }
+
+            var flagcheck3 = true;
+            var hardcount = 0;
+            for (let i = 1; flagcheck3==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "hard"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    hardcount++;
+                }
+                else
+                {
+                    flagcheck3 = false;
+                }
+
+            }
+
+            var diffcount;
+            if (diff == "easy")
+            {
+                diffcount = easycount+1;
+            }
+            else if(diff == "medium")
+            {
+                diffcount = mediumcount+1;
+            }
+            else
+            {
+                diffcount = hardcount+1;
+            }
+
+            for (let i = 1; i < diffcount+1; i++) {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + diff));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+
+                    if (Number(docSnap.data().Score) <= Number(document.getElementById("scorecounter").innerHTML))
+                    {
+
+                        //alert("entered size comparison if");
+
+                        for (let j = diffcount; j > i - 1; j--)
+                        {
+                            var ref2 = doc(db, "PlayerList", ('Player' + (j) + diff));
+                            const docSnap2 = await getDoc(ref2);
+                            if (docSnap2.exists())
+                            {
+                                var tempname = docSnap2.data().PlayerName;
+                                var tempscore = docSnap2.data().Score;
+
+                                var ref3 = doc(db, "PlayerList", ('Player' + (j+1) + diff));
+                                await setDoc(ref3,{
+                                    PlayerName: tempname,
+                                    Score: tempscore,
+                                    Difficulty: diff
+                                })
+                            }
+
+
+
+
+                        }
+
+                        const docref = await setDoc(ref,{
+                            PlayerName: document.getElementById("name").value,
+                            Score: val,
+                            Difficulty: diff
+
+                        })
+                        break;
+                    }
+                }
+                else
+                {
+
+                    const docref = await setDoc(ref,{
+                        PlayerName: document.getElementById("name").value,
+                        Score: val,
+                        Difficulty: diff
+
+                    })
+                    break;
+                }
+            }
+
+            var flag1 = true;
+            for (let i = 1; flag1==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "easy"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    var list =  document.getElementById('easylist');
+                    var record = document.createElement("li");
+                    record.innerHTML = (docSnap.data().PlayerName + ": " + docSnap.data().Score);
+                    list.appendChild(record);
+                }
+                else
+                {
+                    flag1 = false;
+                }
+
+            }
+
+            var flag2 = true;
+            for (let i = 1; flag2==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "medium"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    var list =  document.getElementById('mediumlist');
+                    var record = document.createElement("li");
+                    record.innerHTML = (docSnap.data().PlayerName + ": " + docSnap.data().Score);
+                    list.appendChild(record);
+                }
+                else
+                {
+                    flag2 = false;
+                }
+
+            }
+
+
+            var flag3 = true;
+            for (let i = 1; flag3==true; i++)
+            {
+                var ref = doc(db, "PlayerList", ('Player' + (i) + "hard"));
+                const docSnap = await getDoc(ref);
+                if (docSnap.exists())
+                {
+                    var list =  document.getElementById('hardlist');
+                    var record = document.createElement("li");
+                    record.innerHTML = (docSnap.data().PlayerName + ": " + docSnap.data().Score);
+                    list.appendChild(record);
+                }
+                else
+                {
+                    flag3 = false;
+                }
+
+            }
+
+
+
+        }, 2000)
+
+
+        document.getElementById('eidgif').style.display = "block";
+
+        document.getElementById('leaderboard').style.display = "inline";
+
+
+        document.getElementById("credits").style.display = "none";
+
+    }
+
+    document.getElementById('submitbutton').addEventListener("click", ReadDocument);
+    document.getElementById('submitbutton').addEventListener("click", AddDocument_CustomID);
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+
+    addEventListener("load", function(){
+        document.getElementById("backgroundmusic").play();
+    });
+
+
+    var playername;
+    var qnum;
+    const qdone = [];
+    var totalquestions;
+
+
+
+    function welcomefunction()
+    {
+        document.getElementById("backgroundmusic").play();
+        const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~1234567890]/;
+        playername = document.getElementById('name').value;
+        if (playername.length == 0)
+        {
+            document.getElementById('nonameerror').style.display = "inline";
+        }
+        else if (specialChars.test(playername))
+        {
+
+            document.getElementById('nonameerror').style.display = "inline";
+
+        } else
+        {
+            document.getElementById('welcome').style.display = "none";
+            document.getElementById('difficulty').style.display = "block";
+
+        }
+
+
+        // const db = getFirestore(app);
+
+        // import {collection, addDoc} from "firebase/firestore";
+
+        // try {
+        //     const docRef = await addDoc(collection(db, "users"), {
+        //         name: "Test1",
+        //         score: 0
+        //     });
+        //     console.log("Document written with ID: ", docRef.id);
+        // } catch (e) {
+        //     console.error("Error adding document: ", e);
+        // }
+
+        // firebase.database.ref("User").child().update({
+        //     name: playername,
+        //     score: 0
+        // })
+
+
+        // import { collection, getDocs } from "firebase/firestore";
+        //
+        // const querySnapshot = await getDocs(collection(db, "users"));
+        // querySnapshot.forEach((doc) => {
+        //     console.log(`${doc.id} => ${doc.data()}`);
+        // });
+
+        // firebase.database.ref('/').once('value', function (snapshot) {
+        //     snapshot.forEach(function (childSnapshot) {
+        //         var childKey = childSnapshot.key;
+        //         var childData = childSnapshot.val()
+        //
+        //         document.getElementById("difficultytext").innerHTML = childData['name'] + ", " + childData['score'];
+        //     })
+        // })
+
+    }
+
+    function setdifficulty(difficulty)
+    {
+        totalquestions = difficulty;
+        document.getElementById('difficulty').style.display = "none";
+        document.getElementById('quiz').style.display = "grid";
+        qnum = Math.floor((Math.random() * Math.round(Date.now()))%100) + 1;
+        document.getElementById('question'+qnum).style.display = "block";
+        document.getElementById('divbuttons'+qnum).style.display = "inline";
+
+        if (difficulty == 5)
+        {
+            document.body.style.backgroundImage =  "url('greenbg.jpg')";
+            document.getElementById("backgroundmusic").setAttribute('src', 'easy.m4a');
+            document.getElementById("backgroundmusic").play();
+            document.getElementById("diff").innerHTML = "easy";
+        }
+        else if (difficulty == 10)
+        {
+            document.body.style.backgroundImage = "url('orangebg.jpg')";
+            document.getElementById("backgroundmusic").setAttribute('src', 'medium.m4a');
+            document.getElementById("backgroundmusic").play();
+            document.getElementById("diff").innerHTML = "medium";
+
+        }
+        else
+        {
+            document.body.style.backgroundImage = "url('redbg.jpg')";
+            document.getElementById("backgroundmusic").setAttribute('src', 'intense.m4a');
+            document.getElementById("backgroundmusic").play();
+            document.getElementById("diff").innerHTML = "hard";
+        }
+
+        playername=document.getElementById('name').value;
+
+
+        progbarmove();
+
+    }
+    var val = 0;
+
+
+
+    function myFunction1(number,x, sol) {
+
+        if (x==sol) {
+            document.getElementById('image_c').style.display = "block";
+            setTimeout(function () {
+                document.getElementById('image_c').style.display = "none";
+            }, 1000);
+            val++;
+            var scorebefore = document.getElementById("scorecounter").innerHTML;
+            var scoreint = parseInt(scorebefore);
+            scoreint++;
+            document.getElementById("scorecounter").innerHTML = scoreint;
+            var sfx = new Audio('correct.mp3');
+            sfx.play();
+        } else {
+            document.getElementById('image_w').style.display = "block";
+            setTimeout(function () {
+                document.getElementById('image_w').style.display = "none";
+            }, 1000);
+            var sfx = new Audio('wrong.mp3');
+            sfx.play();
+        }
+
+        document.getElementById('question'+number).style.display = "none";
+        document.getElementById('button'+number+'t').style.display = "none";
+        document.getElementById('button'+number+'f').style.display = "none";
+
+        qdone.push(qnum);
+        if (qdone.length==totalquestions)
+        {
+
+            document.getElementById('question'+qnum).style.display = "none";
+            document.getElementById('divbuttons'+qnum).style.display = "none";
+
+            var val = document.getElementById("scorecounter").innerHTML;
+            var comp1;
+            var comp2;
+            var comp3;
+
+            var diff = document.getElementById("diff").innerHTML;
+            if (diff == "easy")
+            {
+                comp1 = 1;
+                comp2 = 3;
+                comp3 = 4;
+            }
+            else if (diff == "medium")
+            {
+                comp1 = 3;
+                comp2 = 6;
+                comp3 = 9;
+            }
+            else
+            {
+                comp1 = 5;
+                comp2 = 9;
+                comp3 = 14;
+            }
+
+            if (val<=comp1)
+            {
+
+                var output = document.getElementById('result1');
+                output.innerHTML = playername+output.innerHTML;
+                output.style.display = "block";
+
+                document.getElementById('thumbsdown').style.display = "block";
+                var audio = new Audio('poor.mp3');
+                setTimeout(function() {
+                    audio.play();
+                }, 900);
+
+                setTimeout(function() {
+                    output.style.display = "none";
+                    document.getElementById('thumbsdown').style.display = "none";
+                    document.getElementById("preleaderboard").style.display = "block";
+                    // localStorage.setItem('currentplayer', playername);
+                    // localStorage.setItem('currentplayerscore', val);
+                    //document.getElementById("leaderboard").style.display = "inline";
+
+
+
+
+
+                }, 2000);
+            }
+
+            else if (val<=comp2)
+            {
+                var output = document.getElementById('result2');
+                output.innerHTML = playername+output.innerHTML;
+                output.style.display = "block";
+
+
+                document.getElementById('thumbsmiddle').style.display = "block";
+                var audio = new Audio('meh.mp3');
+                setTimeout(function() {
+                    audio.play();
+                }, 1500);
+
+                setTimeout(function() {
+                    output.style.display = "none";
+                    // localStorage.setItem('currentplayer', playername);
+                    // localStorage.setItem('currentplayerscore', val);
+                    document.getElementById('thumbsmiddle').style.display = "none";
+                    document.getElementById("preleaderboard").style.display = "block";
+                    //document.getElementById("leaderboard").style.display = "inline";
+
+                }, 2000);
+            }
+
+            else if (val<=comp3)
+            {
+                var output = document.getElementById('result3');
+                output.innerHTML = playername+output.innerHTML;
+                output.style.display = "block";
+
+
+                document.getElementById('thumbsup').style.display = "block";
+                var audio = new Audio('vgood.mp3');
+                setTimeout(function() {
+                    audio.play();
+                }, 900);
+
+                setTimeout(function() {
+                    output.style.display = "none";
+                    // localStorage.setItem('currentplayer', playername);
+                    // localStorage.setItem('currentplayerscore', val);
+                    document.getElementById('thumbsup').style.display = "none";
+                    document.getElementById("preleaderboard").style.display = "block";
+                    //document.getElementById("leaderboard").style.display = "inline";
+
+
+                }, 2000);
+            }
+
+            else
+            {
+                var output = document.getElementById('result4');
+                output.innerHTML = playername+output.innerHTML;
+                output.style.display = "block";
+
+
+                document.getElementById('perfect').style.display = "block";
+                var audio = new Audio('excellent.mp3');
+                setTimeout(function() {
+                    audio.play();
+                }, 900);
+
+                setTimeout(function() {
+                    output.style.display = "none";
+                    // localStorage.setItem('currentplayer', playername);
+                    // localStorage.setItem('currentplayerscore', val);
+                    document.getElementById('perfect').style.display = "none";
+                    document.getElementById("preleaderboard").style.display = "block";
+                    //document.getElementById("leaderboard").style.display = "inline";
+
+                }, 2000);
+            }
+
+
+
+
+
+            progbarmove();
+
+        }
+        else
+        {
+            var newnum = Math.floor((Math.random() * Math.round(Date.now()))%100) + 1;
+            while (qdone.includes(newnum))
+            {
+                newnum = Math.floor((Math.random() * Math.round(Date.now()))%100) + 1;
+            }
+
+            qnum = newnum;
+
+
+            document.getElementById('question'+qnum).style.display = "block";
+            document.getElementById('divbuttons'+qnum).style.display = "inline";
+
+            progbarmove();
+        }
+
+
+        // firebase.database().ref("User").set({
+        //     name: playername,
+        //     score: val
+        // })
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+    function progbarmove() {
+        var id = null;
+        var wid = parseFloat(document.getElementById('progressbar').style.width);
+        var increase = (100/(totalquestions+1));
+        var newwid = wid+increase;
+        clearInterval(id);
+        id = setInterval(frame, 20);
+        function frame() {
+            if (parseFloat(document.getElementById('progressbar').style.width)>newwid) {
+                clearInterval(id);
+            } else {
+                var increment = 0.5;
+                var wid = parseFloat(document.getElementById('progressbar').style.width);
+                var tempwid = wid+increment;
+                document.getElementById('progressbar').style.width = tempwid+"%";
+            }
+        }
+
+    }
+
+
+    var volume = document.getElementById("volume");
+    var au = document.getElementById("backgroundmusic");
+
+    volume.addEventListener("click", mute);
+
+    function mute() {
+        if (au.muted = !au.muted) {
+            volume.className = 'mute';
+
+        } else {
+            volume.className = 'fullvolume';
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    const playerarray=[];
+    const playerinfo=[];
+
+    playerinfo.push(playername);
+    playerinfo.push(val);
+
+
+
+
+
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-image: url('darkbg.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+
+    h1{
+        font-family: 'Tahoma', sans-serif;
+        color: azure;
+        text-align: center;
+        font-size: 60px;
+        animation: pulse 2s;
+    }
+
+    h2{
+        font-family: 'Tahoma', sans-serif;
+        color: azure;
+        text-align: center;
+
+        animation: pulse 2s;
+        /*alignment: center;*/
+        /*position: fixed;*/
+        /*top: 20px;*/
+        /*right: 50%;*/
+    }
+    h3{
+        font-family: 'Tahoma', sans-serif;
+        color: azure;
+        font-size: 30px;
+        text-align: center;
+
+    }
+    div{
+        padding: 10px;
+        text-align: center;
+        align-self: center;
+
+
+    }
+
+    label{
+        font-family: 'Tahoma', sans-serif;
+        font-size: 20px;
+        color: azure;
+        text-align: center;
+        animation: pulse 2s;
+    }
+    @keyframes pulse {
+        0% {
+            color: limegreen;
+        }
+        100% {
+            color: azure;
+        }
+    }
+
+    @keyframes pulsebutton {
+        0% {
+            color: #000000;
+            background-color: black;
+            /*background-image: linear-gradient(limegreen,forestgreen);*/
+            opacity: 0%;
+            transform: translate(-50px,0px)
+
+        }
+        100% {
+            color: azure;
+            /*background-image: linear-gradient(limegreen,forestgreen);*/
+            opacity: 100%;
+            transform: translate(0px,0px)
+        }
+    }
+
+    @keyframes pulsebutton2 {
+        0% {
+            color: #000000;
+            background-color: black;
+            /*background-image: linear-gradient(red,firebrick);*/
+            opacity: 0%;
+            transform: translate(+50px,0px)
+
+        }
+        100% {
+            color: azure;
+            /*background-color: red;*/
+            /*background-image: linear-gradient(red,firebrick);*/
+            opacity: 100%;
+            transform: translate(0px,0px)
+        }
+    }
+
+    @keyframes picpulse {
+        0% {
+            filter: blur(10px);
+        }
+        100% {
+            filter: blur(0px);
+        }
+    }
+
+
+    @keyframes barmove {
+        0% {
+            width:0%;
+        }
+        100% {
+            width: 16%;
+        }
+    }
+
+    @keyframes idle {
+
+    }
+    /*button{*/
+    /*    border-radius: 20%;*/
+    /*    padding: 10px;*/
+    /*    background-image: linear-gradient(dodgerblue,midnightblue);*/
+    /*    color: azure;*/
+    /*    font-size: 20px;*/
+    /*    font-family: "Inter",sans-serif;*/
+    /*    transition-duration: 0.4s;*/
+
+
+
+
+    /*    !*animation: pulsebutton 5s;*!*/
+
+    /*}*/
+
+    /*button:hover{*/
+    /*    background-image: linear-gradient(royalblue,darkblue);*/
+    /*    color: azure;*/
+    /*}*/
+
+    .truebutton{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        /*background-image: linear-gradient(limegreen,forestgreen);*/
+        border-radius: 80px;
+    }
+
+    .truebutton:hover{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        background-image: linear-gradient(forestgreen,darkgreen);
+        color: azure;
+    }
+
+    .truebutton:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, forestgreen 0, darkgreen 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    .truebutton:before {
+        background-color: rgba(0, 100, 0, .32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    .truebutton:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, forestgreen 0, darkgreen 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+
+    .falsebutton{
+        align-self: center;
+        animation: pulsebutton2 2s;
+        /*margin: 100px;*/
+        /*background-image: linear-gradient(limegreen,forestgreen);*/
+        border-radius: 80px;
+    }
+
+    .falsebutton:hover{
+        align-self: center;
+        animation: pulsebutton2 2s;
+        /*margin: 100px;*/
+        background-image: linear-gradient(red,firebrick);
+        color: azure;
+    }
+
+    .falsebutton:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, red 0, firebrick 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    .falsebutton:before {
+        background-color: rgba(100, 0, 0, .32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    .falsebutton:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, red 0, firebrick 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+
+    .easybutton{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        /*background-image: linear-gradient(limegreen,forestgreen);*/
+        border-radius: 80px;
+    }
+
+    .easybutton:hover{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        background-image: linear-gradient(forestgreen,darkgreen);
+        color: azure;
+    }
+
+    .easybutton:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, forestgreen 0, darkgreen 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    .easybutton:before {
+        background-color: rgba(0, 100, 0, .32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    .easybutton:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, forestgreen 0, darkgreen 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+    .mediumbutton{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        /*background-image: linear-gradient(limegreen,forestgreen);*/
+        border-radius: 80px;
+    }
+
+    .mediumbutton:hover{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        background-image: linear-gradient(#ffcb00,orange);
+        color: azure;
+    }
+
+    .mediumbutton:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, #ffcb00 0, orange 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    .mediumbutton:before {
+        background-color: rgba(255, 203, 0, .32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    .mediumbutton:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ffcb00 0, orange 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+    .hardbutton{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        /*background-image: linear-gradient(limegreen,forestgreen);*/
+        border-radius: 80px;
+    }
+
+    .hardbutton:hover{
+        align-self: center;
+        animation: pulsebutton 2s;
+        /*margin: 100px;*/
+        background-image: linear-gradient(red,firebrick);
+        color: azure;
+    }
+
+    .hardbutton:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, red 0, firebrick 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    .hardbutton:before {
+        background-color: rgba(255,0,0,.32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    .hardbutton:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, red 0, firebrick 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+
+
+
+   /* CSS */
+button{
+   align-items: center;
+   appearance: none;
+   background-clip: padding-box;
+   background-color: initial;
+   background-image: none;
+   border-style: none;
+   box-sizing: border-box;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   flex-direction: row;
+   flex-shrink: 0;
+   font-family: Eina01,sans-serif;
+   font-size: 16px;
+   font-weight: 800;
+   justify-content: center;
+   line-height: 24px;
+   margin: 100px;
+   min-height: 64px;
+   outline: none;
+   overflow: visible;
+   padding: 19px 26px;
+   pointer-events: auto;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   text-transform: none;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   vertical-align: middle;
+   width: auto;
+   word-break: keep-all;
+   z-index: 0;
+}
+
+    @media (min-width: 768px) {
+         button{
+            padding: 19px 32px;
+        }
+    }
+
+    button:before,
+    button:after {
+        border-radius: 80px;
+    }
+
+    button:before {
+        background-color: rgba(249, 58, 19, .32);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -2;
+    }
+
+    button:after {
+        background-color: initial;
+        background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+        bottom: 4px;
+        content: "";
+        display: block;
+        left: 4px;
+        overflow: hidden;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        transition: all 100ms ease-out;
+        z-index: -1;
+    }
+
+    button:hover:not(:disabled):after {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        transition-timing-function: ease-in;
+    }
+
+    button:active:not(:disabled) {
+        color: #ccc;
+    }
+
+    button:active:not(:disabled):after {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+    }
+
+    button:disabled {
+        cursor: default;
+        opacity: .24;
+    }
+
+
+    #audioplayermain{
+
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    #playerboundry{
+
+        margin-left: auto;
+        margin-right: auto;
+        background-color:transparent;
+
+    }
+
+    .fullvolume{
+        width:60px;
+        height: 60px;
+        background-image:url('volume-button.png');
+        background-repeat:no-repeat;
+        background-size: 60px;
+    }
+    .mute{
+        width:60px;
+        height: 60px;
+        background-image:url('mute.png');
+        background-repeat:no-repeat;
+        background-size: 60px;
+    }
+
+
+
+
+
+
+
+
+
+</style>
+</body>
+</html>
